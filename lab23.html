@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script src="jquery-3.5.1.js"></script></script>
+		<script>
+			$(document).ready(function(){
+						
+				$("#btn1").click(function(){
+					$("#txt").slideUp(3000);
+					alert("Текст скрыт");
+					})
+					});
+					
+			$(document).ready(function(){
+						
+				$("#btn2").click(function(){
+					$("#txt").slideUp(
+						3000,
+						function(){
+						alert("Текст скрыт");
+						}
+					);
+				});
+			});
+			
+			function hideText(n) {
+			if (n<4) {
+				$("#txt"+n).slideUp(
+					1000, function(){ hideText(n+1); }
+				);
+			} else {
+				$("#txt"+n).slideUp(
+					1000,
+					function(){ alert("Все абзацы скрыты"); }
+				);
+			}
+		}
+		
+		$(document).ready(function(){
+						
+			$("#btn3").click(function(){ hideText(1) } );
+			});
+					
+			</script>
+	</head>
+	<body>
+	
+	<input type="button" id="btn1" value="Скрыть текст без CallBack"/>
+	<input type="button" id="btn2" value="Скрыть текст c CallBack"/>
+	<div id="txt">
+	
+	Идти ему было немного; он даже знал,
+	сколько шагов от ворот его дома: ровно семьсот тридцать.
+	Как-то раз он их сосчитал, когда уж очень размечтался.
+	В то время он и сам еще не верил этим мечтам своим.
+	
+	</div>
+	
+	<input type="button" id="btn3" value="Скрыть текст по одному абзацу"/>
+	<div id="txt1"> Идти ему было немного; он даже знал, </div>
+	<div id="txt2"> сколько шагов от ворот его дома: ровно семьсот тридцать. </div>
+	<div id="txt3"> Как-то раз он их сосчитал, когда уж очень размечтался. </div>
+	<div id="txt4"> В то время он и сам еще не верил этим мечтам своим. </div>
+	
+	</body>
+</html>
